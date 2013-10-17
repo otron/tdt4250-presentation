@@ -1,0 +1,5 @@
+Beamer:
+Beamer by Example, by Andrew Mertz and William Slough
+	http://www.tug.org/pracjourn/2005-4/mertz/mertz.pdf
+
+http://en.wikibooks.org/wiki/LaTeX/Presentations
