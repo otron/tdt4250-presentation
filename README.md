@@ -1,4 +1,10 @@
-tdt4250
+tdt4250-presentation
 =======
 
-LaTeX source for a presentation of "Building a database on S3" for the course TDT4150 during the autumn semester of 2013 at NTNU.
+LaTeX source for a presentation of "Building a database on S3", an article by Matthias Brantner, Daniela Florescu, David Graf, Donald Kossmann and Tim Kraska.
+
+The presentation was given by me.
+
+It probably went okay.
+
+
