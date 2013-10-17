@@ -90,148 +90,113 @@
 
 \section{Motivation}
 
-\subsection{The Basic Problem That We Studied}
+\subsection{the assignment was mandatory}
 
-\begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are optional.}
-  % - A title should summarize the slide in an understandable fashion
-  %   for anyone how does not follow everything on the slide itself.
+\section{The Article}
+  \subsection{What's it about?}
 
-  \begin{itemize}
-  \item
-    Use \texttt{itemize} a lot.
-  \item
-    Use very short sentences or short phrases.
-  \end{itemize}
-\end{frame}
+    \begin{frame}{What's it about?}
+      \begin{itemize}
+      \item
+        How to build a database on S3/AWS (pre simpleDB)
+      \item
+        S3: cloud based storage service employing a 
+        ``pay for what you use'' payment model
+      \item
+        why would you want to do that?
+        \begin{itemize}
+        \item
+          less infrastructure to maintain
+        \item
+          means possible \$\$ savings
+        \item
+          something about concurrency and scalability
+        \item
+          come on peeps y'all know this stuff
+        \end{itemize}
+      \item
+        b-tree implementation on top of s3?
+      \item
+        implementations of different levels of consistency using S3
+      \end{itemize}
+    \end{frame}
 
-\begin{frame}{Make Titles Informative.}
+\subsection{The proposed implementation}
+  \begin{frame}{the proposed implementation}
+    \begin{itemize}
+      \item
+        there's going to be an illustration here
+      \item
+        probably like at least two
+    \end{itemize}
+  \end{frame}
 
-  You can create overlays\dots
-  \begin{itemize}
-  \item using the \texttt{pause} command:
+  \begin{frame}{is it any good?}
+    \begin{itemize}
+      \item
+        well it's from 2008
+        \begin{itemize}
+        \item
+          experiments results are like five years old
+          \begin{itemize}
+          \item
+            prices have probably changed (a lot could happen with an economy in 5 years)
+          \item 
+            latencies might not be the same (5 years is a long time on the internet)
+          \end{itemize}
+        \item
+          amazon now offers ``Simple DB'' which seems to be pretty similar to what the article is doing with s3 although apparently simpleDB costs \$\$\$\$
+        \end{itemize}
+      \end{itemize}
+    \end{frame}
+
+\section{the general premise}
+  \subsection{what about that?}
+  \begin{frame}{the good}
     \begin{itemize}
     \item
-      First item.
-      \pause
-    \item    
-      Second item.
+      yeah it's pretty good if you want a scalable application
+      \begin{itemize}
+      \item
+        I mean who enjoys having to invest in physical infrastructure?
+      \item
+        physical stuff requires maintenance
+      \item
+        pay for what you use
+        \begin{itemize}
+        \item
+          the bill reflects actual usage
+        \item
+          no initial costs
+        \end{itemize}
+      \end{itemize}
     \end{itemize}
-  \item
-    using overlay specifications:
-    \begin{itemize}
-    \item<3->
-      First item.
-    \item<4->
-      Second item.
-    \end{itemize}
-  \item
-    using the general \texttt{uncover} command:
-    \begin{itemize}
-      \uncover<5->{\item
-        First item.}
-      \uncover<6->{\item
-        Second item.}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-
-\subsection{Previous Work}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-
-
-\section{Our Results/Contribution}
-
-\subsection{Main Results}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-
-\subsection{Basic Ideas for Proofs/Implementation}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-
-
-\section*{Summary}
-
-\begin{frame}{Summary}
-
-  % Keep the summary *very short*.
-  \begin{itemize}
-  \item
-    The \alert{first main message} of your talk in one or two lines.
-  \item
-    The \alert{second main message} of your talk in one or two lines.
-  \item
-    Perhaps a \alert{third message}, but not more than that.
-  \end{itemize}
-  
-  % The following outlook is optional.
-  \vskip0pt plus.5fill
-  \begin{itemize}
-  \item
-    Outlook
+  \end{frame}
+  \begin{frame}{the less good}
     \begin{itemize}
     \item
-      Something you haven't solved.
+      pay for what you use
+      \begin{itemize}
+        \item
+        would suck to get ddos'd
+        \item
+        if income doesn't approximately correlate with usage it could cost you money
+      \end{itemize}
     \item
-      Something else you haven't solved.
+    remember how the NSA is monitoring everything
     \end{itemize}
-  \end{itemize}
-\end{frame}
+  \end{frame}
 
+  \begin{frame}{alternatives?}
 
+    \begin{itemize}
+    \item
+      or something.
+    \item
+      probably a conclusion or something.
+    \end{itemize}
+  \end{frame}
 
-% All of the following is optional and typically not needed. 
-\appendix
-\section<presentation>*{\appendixname}
-\subsection<presentation>*{For Further Reading}
-
-\begin{frame}[allowframebreaks]
-  \frametitle<presentation>{For Further Reading}
-    
-  \begin{thebibliography}{10}
-    
-  \beamertemplatebookbibitems
-  % Start with overview books.
-
-  \bibitem{Author1990}
-    A.~Author.
-    \newblock {\em Handbook of Everything}.
-    \newblock Some Press, 1990.
- 
-    
-  \beamertemplatearticlebibitems
-  % Followed by interesting articles. Keep the list short. 
-
-  \bibitem{Someone2000}
-    S.~Someone.
-    \newblock On this and that.
-    \newblock {\em Journal of This and That}, 2(1):50--100,
-    2000.
-  \end{thebibliography}
-\end{frame}
 
 \end{document}
 
