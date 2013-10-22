@@ -144,7 +144,36 @@
   \begin{frame}{The proposed implementation (continued)}
     \begin{itemize}
     \item
+      SQS can be used to implement a simple commit protocol
+    \item
+      requires that something actually applies the logs
+    \item
+      e.g. any node in the system, a watchdog 
+    \item
+      either way we still end up with eventual consistency
+      \begin{itemize}
+      \item
+        ``all accesses to an item will, eventually, return the last updated value given that no new updates occur''
+      \end{itemize}
+    \end{itemize}
+  \end{frame}
 
+  \begin{frame}{Achievable transactional properties}
+    \begin{itemize}
+    \item
+      Atomicity -- yes! e.g. Atomic Queues
+    \item
+      Consistency -- at least eventually
+      \begin{itemize}
+      \item
+        Monotonic Reads: commit timestamps on pages
+      \item
+        Monotonic Writes: update counter on pages
+      \item
+        Read Yo Writes: automatically if monotonic reads
+      \item
+        Write follows read: yes, updates are applied to cached pages
+      \end{itemize}
     \end{itemize}
   \end{frame}
 
@@ -155,7 +184,7 @@
       \item
         ``We have made experiments and as a rule of thumb it can be expected that SQS returns only every tenth relevant message.''
       \item
-       
+
         \begin{itemize}
         \item
           experiments results are like five years old
