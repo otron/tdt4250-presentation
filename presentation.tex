@@ -20,11 +20,13 @@
 
 \usepackage[utf8]{inputenc}
 
+\usepackage{graphicx}
+
 \usepackage{times}
 \usepackage[T1]{fontenc}
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
-
+\setbeamertemplate{caption}{\insertcaption}
 
 
 \title[Building a database on S3] % (optional, use only with long paper titles)
@@ -94,7 +96,6 @@
 
 \section{The Article}
   \subsection{What's it about?}
-
     \begin{frame}{What's it about?}
       \begin{itemize}
       \item
@@ -120,18 +121,41 @@
 
 \subsection{The proposed implementation}
   \begin{frame}{The proposed implementation}
+  % first image
+    \begin{center}
+      \includegraphics[width=\linewidth]{img/ADB arch 1.pdf}
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{The proposed implementation}
+  % second image
+    \begin{center}
+      \includegraphics[width=\linewidth]{img/ADB arch 2.pdf}
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{The proposed implementation}
+  % third image
+    \begin{center}
+      \includegraphics[width=\linewidth]{img/ADB arch 3.pdf}
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{The proposed implementation (continued)}
     \begin{itemize}
-      \item
-        there's going to be an illustration here
-      \item
-        probably like at least two
+    \item
+
     \end{itemize}
   \end{frame}
 
   \begin{frame}{is it any good?}
     \begin{itemize}
       \item
-        well it's from 2007
+        It's from 2007
+      \item
+        ``We have made experiments and as a rule of thumb it can be expected that SQS returns only every tenth relevant message.''
+      \item
+       
         \begin{itemize}
         \item
           experiments results are like five years old
