@@ -51,19 +51,39 @@
 \begin{document}
 \maketitle
 
-\section{First section}
+%\chapter{It Begins}
 
-And so it begins: with nothing.
-Or an amount of something that is indiscernable from nothing.
-You blink.
-There's definitely something now.
-A whole bunch of something.
-Where'd it all come from?
+``Imagine, if you will, a worry-free world.''
 
-The article, \%TITLE, lays down an outline of how one could build a near infinitely scalable database system on top of Amazon's Simple Storage Service (S3).
+
+Traditional system administration involved maintaining the system's hardware as well as everything else.
+Some enjoy this while others would rather not crawl around in tight spaces and tinker with something physical in addition to their other duties.
+And assystems grow more complex and fields expand outwards, being a jack-of-all trades becomes an unsustainable venture for the individual.
+Will society progress towards a future in which each individual must specialize so thoroughly in one field that their usefulness in all other fields diminish to nothing?
+Who knows.
+
+Either way, service providers like those guys who started selling books on the internet have figured out how to turn a profit by providing certain services at a sufficiently large scale.
+Take their Simple Storage System, for example.
+A near infinitely scalable and concurrent file storage service (for the consumers).
+If the availability drops below $99.9\%$ the customers receive a discount.
+Such a service is typically referred to as a ``cloud'' or ``utility'' service.
+Possibly because there's always a cloud somewhere on this planet and iif all clouds were connected to the internet and stored the same information with a promise of \textit{eventual concurrency} you'd be able to reach your information from wherever.
+
+If one were to maintain such a system one would require a minimum of the maximum expected storage space for the system's data, and then enough extra storage for backups and mirroring in case of disk failures.
+One would have to pay for an internet connection larger than the average expected load.
+And people would have to be kept on payroll to maintain the physical parts of the system as well as the non-physical parts like the software.
+To summarise it is a load of hassle.
+
+However there exists \textit{utility service providers} that provide for their customers such a service and run a by-use payment model.
+In other words, the customers' infrastructure becomes near infintely scalable and concurrent without the customer having to pay the overhead such an infrastructure would impose on them if they were to develop and maintain it themselves.
+Ah, the future! Isn't it great?
+
+The article, ``Building a database on S3'', lays down an outline of how one could build a near infinitely scalable database system on top of Amazon's Simple Storage Service (S3).
 The proposed system exploits the high level of availability Amazon offers with its S3\footnote{$99.9\%$ uptime as of November 2013}
 
+This report mainly goes on about security and how to balance loads? idk, that thing about how and or when to spin up new client instances and where the clients would be running.
 
+\section{The proposed implementation}
 
 
 \section{Security}
@@ -106,5 +126,15 @@ We don't know! The article didn't test it.
 \subsection{A subsection}
 
 More text.
+
+%% Summary
+Would one want to build a database on S3?
+Well, there's nothing wrong with that kind of scalability but it depends on what the bottleneck of your web service is going to be.
+If your service, for some reason, is incompatible with any sort of caching or if it's built around users somehow submitting information to be stored in the database then... maybe?
+One should price shop: look at alternatives (to both infrastructure and the service's structure).
+
+When developing a service one should try and think about such things as ``what is the maximum amount of users this service needs to be able to serve at once?'' and ``what kind of traffic/activity is the average user going to generate?'' and ``how high does the service's availability need to be?''.
+There'll probably be questions or cases that are more specific to particular services, but unless the answer to these three questions are ``infinity'', ``all of it'' and ``$99.\bar{o}\%$'' then the service probably does not need all that ``building a database on S3'' (or similar solutions, like SimpleDB) offers.
+However it does help, but there's probably alternatives out there to building a database on S3 and \textit{you should try and look for them}.
 
 \end{document}
