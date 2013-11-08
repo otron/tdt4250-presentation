@@ -43,7 +43,7 @@
 \setcounter{secnumdepth}{1}
 
 
-\title{Brief Article}
+\title{Building a database on S3? That is the title of the article.}
 \author{Odd M. Trondrud}
 \date{November 2013} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
@@ -106,6 +106,8 @@ However it also increases the complexity of the system as each client would have
 
 would require that an attacker is also in posession of the private key used to encrypt the data 
 
+since some authentication scheme is required on the clients it is not advisable to allow the users physical or root access to the machines on which the client runs. In other words, the clients should rather be running on servers and users should interface with the clients over the magic that is the internet.
+
 S3 a
 If unencrypted data travels thr
 is at some point outside of a controlled closed system 
@@ -114,8 +116,14 @@ However, if your data is unencrypted as it arrives Amazon's
 
 Client-Side Encryption would require that all involved clients 
 
+\subsection{Client Authentication}
+
 \subsection{Traffic Encryption}
 
+%% authentication
+Clients must be able to authenticate themselves in order to gain access to the system.
+
+Oooh also load balancing is a question the article doesn't discuss nor how to 
 
 \section{Eventual Consistency}
 Messages can be retained in SQS for up to 14 days.
