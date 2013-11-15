@@ -84,12 +84,13 @@ This report mainly goes on about security and how to balance loads? idk, that th
 
 \section{The proposed implementation}
 
-\includegraphics{img/proposed-architecture.pdf}
-
-Since logs are stored on SQ
-The idea is pretty neat and 
-the record and page manager part of the DBMS is retained within 
-
+\begin{figure}
+	\begin{center}
+		\includegraphics{img/proposed-architecture.pdf}
+		\caption{An overview of the suggested architecture in the article.}
+		\label{figure:proposed-architecture}
+	\end{center}
+\begin{figure}
 
 \section{Scalability and bottlenecks}
 While the article claims that the proposed implementation would be able to support a very large number of concurrent clients, effectively eliminating the DBMS as a potential bottleneck, it does not discuss how the number of clients could be managed.
