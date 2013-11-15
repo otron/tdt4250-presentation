@@ -90,6 +90,17 @@ Since logs are stored on SQ
 The idea is pretty neat and 
 the record and page manager part of the DBMS is retained within 
 
+
+\section{Scalability and bottlenecks}
+While the article claims that the proposed implementation would be able to support a very large number of concurrent clients, effectively eliminating the DBMS as a potential bottleneck, it does not discuss how the number of clients could be managed.
+An ideal scalable system should scale itself automatically, the number of active clients at any given time, growing and shrinking with the number of active users.
+A ``master'' client that monitors traffic and load on the system and spawns and terminates clients as needed could be introduced, however this could result in the master client becoming a new bottleneck.
+Alternatively each client could be allowed to spawn new clients whenever the load passes over some threshold and diverting traffic to other clients (new clients could be given a copy of the spawning client's buffer pool to reduce the amount of requests to S3).
+Clients could terminate themselves when the load passes below some threshold, however if there is only one active client it should not be allowed to terminate itself.
+This introduces the question of how traffic should be diverted between clients, which depends on the application's nature.
+Research has probably been done on this and could be worth looking into.
+
+
 \section{Security}
 The article barely touches on security concerns related to such a truly distributed system which it proposes.
 It states that read and/or write privileges to a collection (i.e. a \textit{bucket} in S3 terminology) can be restricted on a per-client basis by the client that owns the collection, and that a security infrastructure \textit{can} be implemented on top of S3 however it does not present an explanation of \textit{how}.
