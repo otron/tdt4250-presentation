@@ -55,15 +55,14 @@
 
 ``Imagine, if you will, a worry-free world.''
 
-
 Traditional system administration involved maintaining the system's hardware as well as everything else.
 Some enjoy this while others would rather not crawl around in tight spaces and tinker with something physical in addition to their other duties.
 And assystems grow more complex and fields expand outwards, being a jack-of-all trades becomes an unsustainable venture for the individual.
 Will society progress towards a future in which each individual must specialize so thoroughly in one field that their usefulness in all other fields diminish to nothing?
 Who knows.
 
-Either way, service providers like those guys who started selling books on the internet have figured out how to turn a profit by providing certain services at a sufficiently large scale.
-Take their Simple Storage System, for example.
+Either way, service providers (like those guys who started selling books on the internet) have figured out how to turn a profit by providing certain services at a sufficiently large scale.
+Take their Simple Storage System, for example:
 A near infinitely scalable and concurrent file storage service (for the consumers).
 If the availability drops below $99.9\%$ the customers receive a discount.
 Such a service is typically referred to as a ``cloud'' or ``utility'' service.
@@ -85,13 +84,26 @@ This report mainly goes on about security and how to balance loads? idk, that th
 
 \section{The proposed implementation}
 
+\includegraphics{img/proposed-architecture.pdf}
+
+Since logs are stored on SQ
+The idea is pretty neat and 
+the record and page manager part of the DBMS is retained within 
 
 \section{Security}
 The article barely touches on security concerns related to such a truly distributed system which it proposes.
 It states that read and/or write privileges to a collection (i.e. a \textit{bucket} in S3 terminology) can be restricted on a per-client basis by the client that owns the collection, and that a security infrastructure \textit{can} be implemented on top of S3 however it does not present an explanation of \textit{how}.
 This is somewhat understandable as the definition of ``client'' provided by the article\footnote{"\[\dots\] refer to software artifacts that retrieve pages from S3 and write pages back to S3."} is rather vague and implementing a proper security infrastructure for a system one knows very little about can be difficult.
 
+However, guesstimation is possible and there are certain general security-related issues that arise when dealing with distributed systems.
+
+\subsection{Data Encryption}
+If your data is proper sensitive like you probably shouldn't store it on a service you don't control.
+However, just because 
+
 However, from examining what security features Amazon now\footnote{November 2013} offers along with its SQS and S3 services it is possible to deduce with what kind of system a certain level of security is possible to achieve.
+
+
 
 \subsection{Data Encryption}
 Amazon offers Server-Side Encryption of data stored on S3.
@@ -100,8 +112,10 @@ Wholly relying on the offered Server-Side Encryption means that data arrives at 
 Regardless of how much trust one places in the service provider, this approach renders the system vulnerable to a man in the middle attack. 
 
 Client-Side Encryption is possible as objects in S3 are simply byte streams with some S3 metadata (such as the object's URI).
+The metadata does not contain any information about the object's contents, so it can be left unencrypted.
+The actual data however, should be encrypted on the client-side 
 Performing Client-Side Encryption increases the complexity of the task of obtaining the data.
-However it also increases the complexity of the system as each client would have to be able to decrypt the data.
+It also increases the complexity of the system as each client would have to be able to decrypt the data.
 
 
 would require that an attacker is also in posession of the private key used to encrypt the data 
@@ -117,11 +131,9 @@ However, if your data is unencrypted as it arrives Amazon's
 Client-Side Encryption would require that all involved clients 
 
 \subsection{Client Authentication}
+Some sort of client authentication would be advisable to make it harder for attackers to overwrite all your data with rubbish.
 
-\subsection{Traffic Encryption}
 
-%% authentication
-Clients must be able to authenticate themselves in order to gain access to the system.
 
 Oooh also load balancing is a question the article doesn't discuss nor how to 
 
