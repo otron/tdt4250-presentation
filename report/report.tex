@@ -116,55 +116,24 @@ However, guesstimation is possible and there are certain general security-relate
 
 \subsection{Data Encryption}
 If your data is proper sensitive like you probably shouldn't store it on a service you don't control.
-However, just because 
-
-However, from examining what security features Amazon now\footnote{November 2013} offers along with its SQS and S3 services it is possible to deduce with what kind of system a certain level of security is possible to achieve.
-
-
-
-\subsection{Data Encryption}
-Amazon offers Server-Side Encryption of data stored on S3.
-However one should not trust others to keep one's own secrets.
-Wholly relying on the offered Server-Side Encryption means that data arrives at Amazon's data centres unencrypted.
-Regardless of how much trust one places in the service provider, this approach renders the system vulnerable to a man in the middle attack. 
-
-Client-Side Encryption is possible as objects in S3 are simply byte streams with some S3 metadata (such as the object's URI).
-The metadata does not contain any information about the object's contents, so it can be left unencrypted.
-The actual data however, should be encrypted on the client-side 
-Performing Client-Side Encryption increases the complexity of the task of obtaining the data.
-It also increases the complexity of the system as each client would have to be able to decrypt the data.
-
-
-would require that an attacker is also in posession of the private key used to encrypt the data 
-
-since some authentication scheme is required on the clients it is not advisable to allow the users physical or root access to the machines on which the client runs. In other words, the clients should rather be running on servers and users should interface with the clients over the magic that is the internet.
-
-S3 a
-If unencrypted data travels thr
-is at some point outside of a controlled closed system 
-If data arrives at Amazon's centres unencrypted 
-However, if your data is unencrypted as it arrives Amazon's 
-
-Client-Side Encryption would require that all involved clients 
+Although Amazon offers server-side encryption of the data stored on S3, recent revelations regarding certain companies willingness to comply with certain intelligence agencies' requests for access to their data\ref{snowden-thing} should serve as deterrent for everyone from trusting anyone but themselves.
+In other words, client side encryption of the data would be adviseable.
+This would increase the complexity of the implementation, as every client should be able to decrypt and encrypt the data independently.
 
 \subsection{Client Authentication}
-Some sort of client authentication would be advisable to make it harder for attackers to overwrite all your data with rubbish.
+To avoid (or at least reduce the risk of) an attacker snooping up the URIs of pages and buckets and writing junk data to these, the system should require some sort of client authentication.
+Amazon allows you to create users on an account that can be granted access to specific buckets or objects\ref{access control in S3}.
+One possible authentication scheme could be that each client corresponds to a user on the S3 account.
+However this would require that users be created on the fly as new clients are spawned.
+In addition, this solution would require that the clients are somehow informed of their user credentials when spawned.
+If it is not possible to create and delete users through the S3 API then the maximum number of active clients would be limited by the number of available users on the account.
+Some type of special client that the other clients request credentials from could be introduced.
+The request would have to be verified by the system somehow, to prevent attackers from obtaining credentials by simply requesting them.
+For example, the credential granting client could require that the request be signed by the client that spawned the new client.
+Alternatively the job of actually spawning new clients could be delegated to the credential granting client.
+Both of these solutions introduces a potential bottleneck in the special client.
 
-
-
-Oooh also load balancing is a question the article doesn't discuss nor how to 
-
-\section{Eventual Consistency}
-Messages can be retained in SQS for up to 14 days.
-
-\section{How bad is the eventual consistency?}
-We don't know! The article didn't test it.
-
-\subsection{A subsection}
-
-More text.
-
-%% Summary
+\section{Summary}
 Would one want to build a database on S3?
 Well, there's nothing wrong with that kind of scalability but it depends on what the bottleneck of your web service is going to be.
 If your service, for some reason, is incompatible with any sort of caching or if it's built around users somehow submitting information to be stored in the database then... maybe?
