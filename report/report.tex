@@ -58,7 +58,10 @@ It presents a brief summary of the article and briefly discusses security and cl
 Reasons for why one might to do such a thing as build a database on top of S3 are discussed at the end.
 \end{abstract}
 
-``Imagine, if you will, a worry-free world.''
+
+\section{Introduction}
+\textit{``Imagine, if you will, a worry-free world.''}
+% This is supposed to be a quote but \quote didn't really do the trick, visually speaking.
 
 Traditional system administration involved maintaining the system's hardware as well as everything else.
 Some enjoy this while others would rather not crawl around in tight spaces and tinker with something physical in addition to their other duties.
@@ -74,7 +77,7 @@ Such a service is typically referred to as a ``cloud'' or ``utility'' service.
 Possibly because there's always a cloud somewhere on this planet and iif all clouds were connected to the internet and stored the same information with a promise of \textit{eventual concurrency} you'd be able to reach your information from wherever.
 
 If one were to maintain such a system one would require a minimum of the maximum expected storage space for the system's data, and then enough extra storage for backups and mirroring in case of disk failures.
-One would have to pay for an internet connection larger than the average expected load.
+One would have to pay for an internet connection capable of handling a way higher load than what's expected.
 And people would have to be kept on payroll to maintain the physical parts of the system as well as the non-physical parts like the software.
 To summarise it is a load of hassle.
 
@@ -84,8 +87,6 @@ Ah, the future! Isn't it great?
 
 The article, ``Building a database on S3'', lays down an outline of how one could build a near infinitely scalable database system on top of Amazon's Simple Storage Service (S3).
 The proposed system exploits the high level of availability Amazon offers with its S3\footnote{$99.9\%$ uptime as of November 2013}
-
-This report mainly goes on about security and how to balance loads? idk, that thing about how and or when to spin up new client instances and where the clients would be running.
 
 \section{The Proposed Implementation}
 \begin{figure}[H]
