@@ -21,7 +21,8 @@
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
-\usepackage{float}
+\usepackage{float} % to make H available as an override for figure positioning
+\usepackage{url} % to allow usage of \url{} in bibtex
 
 
 %%% HEADERS & FOOTERS
@@ -71,8 +72,7 @@ Who knows.
 
 Either way, service providers (like those guys who started selling books on the internet) have figured out how to turn a profit by providing certain services at a sufficiently large scale.
 Take their Simple Storage System, for example:
-A near infinitely scalable and concurrent file storage service (for the consumers).
-If the availability drops below $99.9\%$ the customers receive a discount.
+A near infinitely scalable and concurrent file storage service (for the consumers) that is discounted if the availability drops below $99.9\%$\cite{s3-sla}.
 Such a service is typically referred to as a ``cloud'' or ``utility'' service.
 Possibly because there's always a cloud somewhere on this planet and iif all clouds were connected to the internet and stored the same information with a promise of \textit{eventual concurrency} you'd be able to reach your information from wherever.
 
@@ -116,13 +116,13 @@ However, guesstimation is possible and there are certain general security-relate
 
 \subsection{Data Encryption}
 If your data is proper sensitive like you probably shouldn't store it on a service you don't control.
-Although Amazon offers server-side encryption of the data stored on S3, recent revelations regarding certain companies willingness to comply with certain intelligence agencies' requests for access to their data\ref{snowden-thing} should serve as deterrent for everyone from trusting anyone but themselves.
+Although Amazon offers server-side encryption of the data stored on S3, recent revelations regarding certain companies willingness to comply with certain intelligence agencies' requests for access to their data\cite{snowden} should serve as deterrent for everyone from trusting anyone but themselves.
 In other words, client side encryption of the data would be adviseable.
 This would increase the complexity of the implementation, as every client should be able to decrypt and encrypt the data independently.
 
 \subsection{Client Authentication}
 To avoid (or at least reduce the risk of) an attacker snooping up the URIs of pages and buckets and writing junk data to these, the system should require some sort of client authentication.
-Amazon allows you to create users on an account that can be granted access to specific buckets or objects\ref{access control in S3}.
+Amazon allows you to create users on an account that can be granted access to specific buckets or objects\cite{s3-access-control}.
 One possible authentication scheme could be that each client corresponds to a user on the S3 account.
 However this would require that users be created on the fly as new clients are spawned.
 In addition, this solution would require that the clients are somehow informed of their user credentials when spawned.
@@ -143,4 +143,7 @@ When developing a service one should try and think about such things as ``what i
 There'll probably be questions or cases that are more specific to particular services, but unless the answer to these three questions are ``infinity'', ``all of it'' and ``$99.\bar{9}\%$'' then the service probably does not need all that ``building a database on S3'' (or similar solutions, like SimpleDB) offers.
 However it does help, but there's probably alternatives out there to building a database on S3 and \textit{you should try and look for them}.
 
+
+\bibliography{references}{}
+\bibliographystyle{plain}
 \end{document}
