@@ -21,6 +21,7 @@
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{float}
 
 
 %%% HEADERS & FOOTERS
@@ -82,9 +83,8 @@ The proposed system exploits the high level of availability Amazon offers with i
 
 This report mainly goes on about security and how to balance loads? idk, that thing about how and or when to spin up new client instances and where the clients would be running.
 
-\section{The proposed implementation}
-
-\begin{figure}
+\section{The Proposed Implementation}
+\begin{figure}[H]
 	\begin{center}
 		\includegraphics{img/proposed-architecture.pdf}
 		\caption{An overview of the suggested architecture in the article.}
